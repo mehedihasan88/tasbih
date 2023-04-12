@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TasBih</string>
+    <string name="button_text">CLICK ME!</string>
+    <string name="mode_off_text">Timer\nMode</string>
+    <string name="mode_on_text">Counter Mode</string>
 </resources>
