@@ -51,7 +51,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:background="@drawable/round_button"
-            android:text="@string/button_text"
+            android:text="@string/click_button_text"
             />
         <TextView
             android:layout_width="100dp"
@@ -72,14 +72,13 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_weight="1" />
-        <ToggleButton
-            android:id="@+id/toggleButton"
+        <Button
+            android:id="@+id/setTargetBtn"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/rectangular_display"
-            android:textOff="@string/mode_off_text"
-            android:textOn="@string/mode_on_text"
+            android:text="@string/set_target_button_text"
             android:textColor="@color/white"/>
         <TextView
             android:layout_width="100dp"
