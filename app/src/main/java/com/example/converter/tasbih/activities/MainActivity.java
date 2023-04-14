@@ -1,4 +1,4 @@
-package com.example.converter.tasbih;
+package com.example.converter.tasbih.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.example.converter.tasbih.R;
 
 public class MainActivity extends AppCompatActivity {
 
