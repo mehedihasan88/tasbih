@@ -3,26 +3,30 @@ package com.example.converter.tasbih.activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.example.converter.tasbih.R;
+import com.example.converter.tasbih.databases.DatabaseHelper;
+import com.example.converter.tasbih.databases.Verse;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView displayTV;
     Button pressBtn;
     Button setTargetBtn;
+
     int cnt = 0;
     int target = 0;
+    int id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,27 +40,34 @@ public class MainActivity extends AppCompatActivity {
         pressBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (cnt == 0 && target == 0) {
-                    displayTV.setText("fuck");
-                    askTimerValue();
-                } else if (cnt == 0 && target != 0) {
-                    displayTV.setText("Target filled!");
-                } else {
-                    cnt--;
+                if(target != 0) cnt--;
+                if (cnt == 0 && target != 0) {
+                    displayTV.setText("DONE!");
+                    vibrateOnDone();
+                    target = 0;
+                    return;
+                } else if (cnt == 0 && target == 0) {
+                    askTargetValue(this);
                 }
                 displayTV.setText(Integer.toString(Math.abs(cnt)));
             }
         });
+
         setTargetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                askTimerValue();
+                askTargetValue(this);
                 displayTV.setText(Integer.toString(Math.abs(cnt)));
             }
         });
     }
 
-    private void askTimerValue() {
+    private void vibrateOnDone() {
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibrator.vibrate(400);
+    }
+
+    private void askTargetValue(View.OnClickListener context) {
         // Create a new AlertDialog Builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -76,6 +87,14 @@ public class MainActivity extends AppCompatActivity {
                 String inputValue = input.getText().toString();
                 target = cnt = Integer.parseInt(inputValue);
                 if (target > 999) target = cnt = 999;
+                else if(target < 1) target = cnt = 1;
+
+
+                Verse verse = new Verse(id++, null, target, cnt);
+                DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+                databaseHelper.insert(verse);
+
+
                 Toast.makeText(getApplicationContext(), "Target is set to " + Math.abs(cnt), Toast.LENGTH_SHORT).show();
                 displayTV.setText(Integer.toString(Math.abs(cnt)));
             }
