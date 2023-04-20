@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Verse verse = new Verse(id++, null, target, cnt);
                 DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
-                databaseHelper.insert(verse);
+                System.out.println(databaseHelper.insert(verse));
 
 
                 Toast.makeText(getApplicationContext(), "Target is set to " + Math.abs(cnt), Toast.LENGTH_SHORT).show();
