@@ -38,9 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(DatabaseStructure.Verses.COLUMN_END_TIME, verse.getEndTime());
         values.put(DatabaseStructure.Verses.COLUMN_TARGET, verse.getCount());
         values.put(DatabaseStructure.Verses.COLUMN_COUNT, verse.getTarget());
-        long idForRowCreated = db.insert(DatabaseStructure.Verses.TABLE_NAME, null, values);
-        db.close();
-        return idForRowCreated;
+        return db.insert(DatabaseStructure.Verses.TABLE_NAME, null, values);
     }
 
 }

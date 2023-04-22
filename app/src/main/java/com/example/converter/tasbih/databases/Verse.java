@@ -12,8 +12,7 @@ public class Verse {
         this.startTime = LocalDateTime.now().toString();
         this.endTime = null;
     }
-    public Verse(int id, String endTime, int target, int count) {
-        this.id = id;
+    public Verse(String endTime, int target, int count) {
         this.startTime = "bal";
         this.endTime = endTime;
         this.target = target;
@@ -35,9 +34,6 @@ public class Verse {
         return this.count;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
     public void setTarget(int target) {
         this.target = target;
     }

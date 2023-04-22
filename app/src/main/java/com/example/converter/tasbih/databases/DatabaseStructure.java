@@ -4,7 +4,8 @@ import android.provider.BaseColumns;
 
 public class DatabaseStructure {
     private DatabaseStructure() {}
-    //this class describes verses table of the database
+
+    //this inner class describes 'verses' table of the database
     public static class Verses implements BaseColumns {
         public static final String TABLE_NAME = "verses";
         public static final String COLUMN_ID = "id";
