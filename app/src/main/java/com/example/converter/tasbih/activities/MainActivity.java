@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void vibrateOnDone() {
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        vibrator.vibrate(400);
+        vibrator.vibrate(1);
     }
 
     private void askTargetValue(View.OnClickListener context) {
@@ -130,8 +130,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Create and show the AlertDialog
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        builder.show();
     }
 
     // override the onOptionsItemSelected()
