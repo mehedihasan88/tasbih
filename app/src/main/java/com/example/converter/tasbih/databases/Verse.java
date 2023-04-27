@@ -1,6 +1,8 @@
 package com.example.converter.tasbih.databases;
 import java.time.*;
 
+import utilites.Time;
+
 public class Verse {
     private int id;
     private final String startTime;
@@ -12,8 +14,9 @@ public class Verse {
         this.startTime = LocalDateTime.now().toString();
         this.endTime = null;
     }
-    public Verse(String endTime, int target, int count) {
-        this.startTime = "bal";
+    public  Verse(String endTime, int target, int count) {
+        Time time = new Time();
+        this.startTime = time.getTime();
         this.endTime = endTime;
         this.target = target;
         this.count = count;

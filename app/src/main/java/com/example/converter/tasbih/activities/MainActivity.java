@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String inputValue = input.getText().toString();
+                if(inputValue.length() == 0) { return; }
                 target = cnt = Integer.parseInt(inputValue);
                 if (target > 999) target = cnt = 999;
                 else if(target < 1) target = cnt = 1;
